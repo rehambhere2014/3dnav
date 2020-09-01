@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+
+  overflow: hidden;
+}
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background:linear-gradient(to left , #ba7453, #d1a984);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+.main {
+  position: relative;
+  width: 100%;
+  left: 0;
+  color: white;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform-origin: left;
+  z-index: 5;
+  transition: all 1s ease-in-out;
+}
+
+.showcase {
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background: url("./img/simon-rae-kSJTEv9w5l4-unsplash.jpg") no-repeat center
+    center/cover;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.toggle-btn {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background: transparent;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+}
+
+.toggle-btn > span {
+  position: relative;
+  height: 1px;
+  background: white;
+  width: 100%;
+  transition: all 0.4s ease-in-out;
+}
+.toggle-btn > span::before,
+.toggle-btn > span::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: white;
+  width: 100%;
+  top: 10px;
+  left: 0;
+  transition: all 0.4s ease-in-out;
+}
+.toggle-btn > span::after {
+  top: -10px;
+}
+.active .toggle-btn > span {
+  transform: rotate(225deg);
+}
+.active .toggle-btn > span::before,
+.active .toggle-btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.showcase-content {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.shadow {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transition: 1s ease-in-out;
+}
+
+.shadow.one {
+  background-color: white;
+
+  z-index: -1;
+  opacity: 0.15;
+}
+.active .shadow.one {
+  animation: shadow-one 0.6s ease-out;
+  transform: perspective(1300px) scale(0.6) rotateY(20deg) translateZ(320px);
+}
+
+.shadow.two {
+  background-color: white;
+
+  z-index: -2;
+  opacity: 0.1;
+}
+.active .shadow.two {
+  animation: shadow-one 0.6s ease-out;
+  transform: perspective(1300px) scale(0.6) rotateY(20deg) translateZ(220px);
+}
+
+nav {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100vh;
+
+  transform: translateX(300px);
+  opacity: 0;
+  transition: all 1.2s ease-in;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.links a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 3rem;
+  color: white;
+
+  margin: 10px 0 0 0 ;
+  font-family: 'Tangerine', cursive;
+
+  transition: all 0.4s ease-in;
+}
+
+.active nav {
+  transform: translateX(-100px);
+  opacity: 1;
+}
+p{
+    max-width: 35rem;
+    text-align: center;
+    color: #fff;
+    padding: 0 2rem;
+}
+.title {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+
+.btn{
+    padding: 0.75rem 1.8rem;
+    border:none;
+    background-color: none;
+    border-radius: 25px;
+    background:linear-gradient(to left , #ba7453, #d1a984);
+
+    color:white;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+.active .main:hover + .shadow.one {
+    transform: perspective(1300px) rotateY(20deg) translateZ(330px) scale(0.6);
+  }
+  .active .main {
+    transform: perspective(1300px) scale(0.6) rotateY(20deg) translateZ(400px);
+  }
+  
+  .active .main:hover {
+    transform: perspective(1300px) rotateY(20deg) translateZ(440px) scale(0.6);
+  }
+
+
+  @media (max-width:600px){
+      .title{
+          font-size: 2rem;
+      }
+      p{
+        min-width: 500px;  
+        width: 100%;
+        padding: 0;
+
+      }
+      .links a{
+          font-size: 2.5rem;
+      }
+      .active nav {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+      .active .main{
+        transform: perspective(1800px) scale(0.6) rotateY(40deg) translateZ(100px);
+    
+      }
+      .active .shadow.one {
+        animation: shadow-one 0.6s ease-out;
+        transform: perspective(1800px) scale(0.6) rotateY(40deg) translateZ(60px);
+    }
+    .active .shadow.two{
+        animation: shadow-one 0.6s ease-out;
+        transform: perspective(1800px) scale(0.6) rotateY(40deg) translateZ(20px);
+    }
+  }
